@@ -28,7 +28,7 @@
                   feedback-link="https://github.com/googlecodelabs/your-first-pwapp/issues">
     
       <google-codelab-step label="Crear un contenedor" duration="0">
-        <p>Utilitza aquest command per crear un contenidor. El que esta després de launch és la versió que vols crear, i al final es el nom que vols crear.</p>
+        <p>Utilitza aquesta comanda per crear un contenidor. El que esta després de launch és la versió que vols crear, i al final es el nom que vols crear.</p>
 <pre><code>lxc launch ubuntu:18.04 myweb</code></pre>
 <p>Utilitza aquest command per executar, el bash et permet escriure commandes.</p>
 <pre><code>lxc exec myweb bash</code></pre>
@@ -36,10 +36,49 @@
 
       </google-codelab-step>
     
+      <google-codelab-step label="Com instal·lar Apache" duration="0">
+        <p>Abans d&#39;instal·lar Apache, tenim que actualitzar les llistes de programes d&#39;Ubuntu.</p>
+<pre><code>sudo apt-get update
+sudo apt install apache2</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Instal·lació de MySQL" duration="0">
+        <p>Instalar MySQL per tenir un lloc on es desa arxius, organitza i proveïrà accés a la base de dades.</p>
+<p>S&#39;ha d&#39;utilitzar  la comanda <strong>apt install</strong> per poder instal·lar aquest software:</p>
+<pre><code>sudo apt install mysql-server</code></pre>
+<p>Executem un arxiu de comandes de seguretat que elimina alguns paràmetres perillosos, serà la següent comanda:</p>
+<p>sudo mysql_secure_installation</p>
+<p>Preguntara si vols configurar el conector de validació de la contrasenya: <strong>VALIDATE PASSWORD PLUGIN.</strong></p>
+<p>Respon <strong>Y</strong> si estas d&#39;acord, un altre resposta continuará sense realitzar habilitació.</p>
+<p>VALIDATE PASSWORD PLUGIN can be used to test passwords</p>
+<p>and improve security. It checks the strength of password</p>
+<p>and allows the users to set only those passwords which are</p>
+<p>secure enough. Would you like to setup VALIDATE PASSWORD plugin?</p>
+<p>Press y|Y for Yes, any other key for No:</p>
+<p>Si has respos &#34;Yes&#34; et preguntará el nivell de contrasenya que vols:</p>
+<p>There are three levels of password validation policy:</p>
+<p>LOW    Length &gt;= 8</p>
+<p>MEDIUM Length &gt;= 8, numeric, mixed case, and special characters</p>
+<p>STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary                  file</p>
+<p>Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1</p>
+<p>Assenyala el nivell de la teva contrasenya i et diu si vols canviar o no:</p>
+<p>Using existing password for root.</p>
+<p>Estimated strength of the password: 100</p>
+<p>Change the password for root ? ((Press y|Y for Yes, any other key for No) : n</p>
+<p>Les següents preguntes pressiona Y pulsa ENTER en cada suggeriment. Eliminarà usuaris anònims i base de dades de proves, deshabilita ingresos remots del root i afegirà noves normes, per al MySQL respecte immediatament els canvis que s&#39;acaben de fer.</p>
+<p>En aquest punt, el teu sistema de bases de dades es troba configurat i pots seguir amb la instal·lació de PHP, el component final de la pila LAMP.</p>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Com instal·lar OwnCloud dins de un contenedor" duration="0">
-        <p>Utilitza aquestes comandes per actualitzar i instal·lar el OwnCloud.</p>
+        <p>Utilitza aquestes comandes per actualitzar i instalar el OwnCloud.</p>
 <pre><code>Sudo apt-get update
 Sudo apt-get install owncloud-files</code></pre>
+<p>Paquetes LAMP:<a href="https://www.digitalocean.com/community/tutorials/como-instalar-en-ubuntu-18-04-la-pila-lamp-linux-apache-mysql-y-php-es" target="_blank">https://www.digitalocean.com/community/tutorials/como-instalar-en-ubuntu-18-04-la-pila-lamp-linux-apache-mysql-y-php-es</a></p>
+<p>OwnCloud:<a href="https://maslinux.es/como-instalar-owncloud-en-ubuntu-18-04/" target="_blank">https://maslinux.es/como-instalar-owncloud-en-ubuntu-18-04/</a></p>
 
 
       </google-codelab-step>
