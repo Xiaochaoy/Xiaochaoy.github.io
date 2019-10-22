@@ -49,24 +49,28 @@ sudo apt install apache2</code></pre>
 <p>S&#39;ha d&#39;utilitzar  la comanda <strong>apt install</strong> per poder instal·lar aquest software:</p>
 <pre><code>sudo apt install mysql-server</code></pre>
 <p>Executem un arxiu de comandes de seguretat que elimina alguns paràmetres perillosos, serà la següent comanda:</p>
-<p>sudo mysql_secure_installation</p>
+<pre><code>sudo mysql_secure_installation</code></pre>
 <p>Preguntara si vols configurar el conector de validació de la contrasenya: <strong>VALIDATE PASSWORD PLUGIN.</strong></p>
 <p>Respon <strong>Y</strong> si estas d&#39;acord, un altre resposta continuará sense realitzar habilitació.</p>
-<p>VALIDATE PASSWORD PLUGIN can be used to test passwords</p>
-<p>and improve security. It checks the strength of password</p>
-<p>and allows the users to set only those passwords which are</p>
-<p>secure enough. Would you like to setup VALIDATE PASSWORD plugin?</p>
-<p>Press y|Y for Yes, any other key for No:</p>
+<pre><code>VALIDATE PASSWORD PLUGIN can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD plugin?
+
+Press y|Y for Yes, any other key for No:</code></pre>
 <p>Si has respos &#34;Yes&#34; et preguntará el nivell de contrasenya que vols:</p>
-<p>There are three levels of password validation policy:</p>
-<p>LOW    Length &gt;= 8</p>
-<p>MEDIUM Length &gt;= 8, numeric, mixed case, and special characters</p>
-<p>STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary                  file</p>
-<p>Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1</p>
+<pre><code>There are three levels of password validation policy:
+
+LOW    Length &gt;= 8
+MEDIUM Length &gt;= 8, numeric, mixed case, and special characters
+STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary                  file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1</code></pre>
 <p>Assenyala el nivell de la teva contrasenya i et diu si vols canviar o no:</p>
-<p>Using existing password for root.</p>
-<p>Estimated strength of the password: 100</p>
-<p>Change the password for root ? ((Press y|Y for Yes, any other key for No) : n</p>
+<pre><code>Using existing password for root.
+
+Estimated strength of the password: 100
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : n</code></pre>
 <p>Les següents preguntes pressiona Y pulsa ENTER en cada suggeriment. Eliminarà usuaris anònims i base de dades de proves, deshabilita ingresos remots del root i afegirà noves normes, per al MySQL respecte immediatament els canvis que s&#39;acaben de fer.</p>
 <p>En aquest punt, el teu sistema de bases de dades es troba configurat i pots seguir amb la instal·lació de PHP, el component final de la pila LAMP.</p>
 
