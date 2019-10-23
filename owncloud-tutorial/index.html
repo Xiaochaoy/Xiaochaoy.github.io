@@ -27,6 +27,13 @@
                   environment="web"
                   feedback-link="https://github.com/googlecodelabs/your-first-pwapp/issues">
     
+      <google-codelab-step label="Introducción" duration="0">
+        <p>OwnCloud és una aplicació de programari lliure del tipus Servei d&#39;allotjament d&#39;arxius, que permet l&#39;emmagatzematge en línia i aplicacions en línia. ownCloud pot ser instal·lat dins d&#39;un servidor que disposi d&#39;una versió recent de PHP i suport de SQLite, MySQL o PostgreSQL. </p>
+<p class="image-container"><img style="width: 624.50px" src="img/ee956d99b9fa11f2.png"></p>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Crear un contenedor" duration="0">
         <p>Utilitza aquesta comanda per crear un contenidor. El que esta després de launch és la versió que vols crear, i al final es el nom que vols crear.</p>
 <pre><code>lxc launch ubuntu:18.04 myweb</code></pre>
@@ -37,9 +44,33 @@
       </google-codelab-step>
     
       <google-codelab-step label="Com instal·lar Apache" duration="0">
-        <p>Abans d&#39;instal·lar Apache, tenim que actualitzar les llistes de programes d&#39;Ubuntu.</p>
+        <p>És un dels servidors web més populars en el món. Es troba ben documentat i ha estat utilitzat en bona part de la història del web, aconsegueix èxits per a ser escollit com el servidor més recomenat de pàgines web.</p>
+<p>Abans d&#39;instal·lar Apache, tenim que actualitzar les llistes de programes d&#39;Ubuntu.</p>
 <pre><code>sudo apt-get update
 sudo apt install apache2</code></pre>
+<p><strong>Apt</strong> t&#39;informara quins paquets s&#39;instal·len i quant espai en disc serà requerit. </p>
+<p>Pressionem <strong>Y</strong> i després <strong>Enter</strong> per continuar, així, la instal·lació es realitzarà.</p>
+<h2 is-upgraded>Configuració tallafocs per permitir el tràfic web</h2>
+<p>Si has seguit les instruccions de configuració inicial del servidor i has habilitat el tallafocs<strong> UFW</strong>, ara podràs assegurar-te que la teva tallafocs permet el tràfic <strong>HTTP i HTTPS</strong>. Per fer-ho, verifica que el <strong>UFW </strong>té un perfil d&#39;aplicació per a Apache amb la comanda següent:</p>
+<pre><code>sudo ufw app list
+
+Output
+Available applications:
+  Apache
+  Apache Full
+  Apache Secure
+  OpenSSH</code></pre>
+<p>Si sol·licites la informació del perfil Apache Full, s&#39;hauria de mostrar que el trànsit es troba habilitat per als <strong>ports 80 i 443</strong>:</p>
+<pre><code>sudo ufw app info &#34;Apache Full&#34;
+
+Output
+Profile: Apache Full
+Title: Web Server (HTTP,HTTPS)
+Description: Apache v2 is the next generation of the omnipresent Apache web
+server.
+
+Ports:
+  80,443/tcp</code></pre>
 
 
       </google-codelab-step>
@@ -93,6 +124,10 @@ Sudo apt-get install owncloud-files</code></pre>
 <p>asdg</p>
 <p>asdg</p>
 <p>asdgasdg</p>
+<p>sdg</p>
+<p>sgda</p>
+<p>sdga</p>
+<p>sadg</p>
 
 
       </google-codelab-step>
