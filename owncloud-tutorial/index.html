@@ -58,26 +58,16 @@ sudo apt install apache2</code></pre>
 </aside>
 <p>Pressionem <strong>Y</strong> i després <strong>Enter</strong> per continuar, així, la instal·lació es realitzarà.</p>
 <h2 is-upgraded>Configuració tallafocs per permitir el tràfic web</h2>
-<p>Si has seguit les instruccions de configuració inicial del servidor i has habilitat el tallafocs<strong> UFW</strong>, ara podràs assegurar-te que la teva tallafocs permet el tràfic <strong>HTTP i HTTPS</strong>. Per fer-ho, verifica que el <strong>UFW </strong>té un perfil d&#39;aplicació per a Apache amb la comanda següent:</p>
+<aside class="special"><p>Si has seguit les instruccions de configuració inicial del servidor i has habilitat el tallafocs<strong> UFW</strong>, ara podràs assegurar-te que la teva tallafocs permet el tràfic <strong>HTTP i HTTPS</strong>.</p>
+</aside>
+<p>Per fer-ho, verifica que el <strong>UFW </strong>té un perfil d&#39;aplicació per a Apache amb la comanda següent:</p>
 <pre><code>sudo ufw app list</code></pre>
 <p>Et mostrarà la següent informació</p>
-<pre><code>Output
-Available applications:
-  Apache
-  Apache Full
-  Apache Secure
-  OpenSSH</code></pre>
+<p class="image-container"><img style="width: 222.00px" src="img/2cb28a28968b456.png"></p>
 <p>Si sol·licites la informació del perfil Apache Full, s&#39;hauria de mostrar que el trànsit es troba habilitat per als <strong>ports 80 i 443</strong>:</p>
 <pre><code>sudo ufw app info &#34;Apache Full&#34;</code></pre>
 <p>Et mostrarà la següent informació</p>
-<pre><code>Output
-Profile: Apache Full
-Title: Web Server (HTTP,HTTPS)
-Description: Apache v2 is the next generation of the omnipresent Apache web
-server.
-
-Ports:
-  80,443/tcp</code></pre>
+<p class="image-container"><img style="width: 587.00px" src="img/42a8419575f9d3c8.png"></p>
 <aside class="special"><p>El puerto <code>80</code> es el del HTTP</p>
 <p>El puerto <code>443</code> es el del HTTPS</p>
 </aside>
@@ -94,45 +84,43 @@ Ports:
 <p>Executem un arxiu de comandes de seguretat que elimina alguns paràmetres perillosos, serà la següent comanda:</p>
 <pre><code>sudo mysql_secure_installation</code></pre>
 <p>Preguntara si vols configurar el conector de validació de la contrasenya: <strong>VALIDATE PASSWORD PLUGIN.</strong></p>
-<aside class="special"><p><strong>Nota: </strong></p>
+<aside class="special"><p><strong>Nota: </strong>Habilitar la funcionalitat depèn de les necessitats del servidor. En el cas que estigues habilitada una contrasenya, el MYSQL (rechazara) i genera un error. </p>
 </aside>
 <p>Respon Y si estas d&#39;acord, un altre resposta continuará sense realitzar habilitació.</p>
-<pre><code>VALIDATE PASSWORD PLUGIN can be used to test passwords
-and improve security. It checks the strength of password
-and allows the users to set only those passwords which are
-secure enough. Would you like to setup VALIDATE PASSWORD plugin?
-
-Press y|Y for Yes, any other key for No:</code></pre>
+<p class="image-container"><img style="width: 587.00px" src="img/764ecee9fb83753f.png"></p>
 <p>Si has respos &#34;Yes&#34; et preguntará el nivell de contrasenya que vols:</p>
-<pre><code>There are three levels of password validation policy:
-
-LOW    Length &gt;= 8
-MEDIUM Length &gt;= 8, numeric, mixed case, and special characters
-STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary   file
-
-Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1</code></pre>
+<p class="image-container"><img style="width: 587.00px" src="img/fb0833534112c3dc.png"></p>
 <p>Assenyala el nivell de la teva contrasenya i et diu si vols canviar o no:</p>
-<pre><code>Using existing password for root.
-
-Estimated strength of the password: 100
-Change the password for root ? ((Press y|Y for Yes, any other key for No) : n</code></pre>
-<p>Les següents preguntes pressiona Y pulsa ENTER en cada suggeriment. </p>
-<aside class="warning"><p>Eliminarà usuaris anònims i base de dades de proves, deshabilita ingresos remots del root i afegirà noves normes, per al MySQL respecte immediatament els canvis que s&#39;acaben de fer.</p>
+<p class="image-container"><img style="width: 587.00px" src="img/fa4f14592472b0c9.png"></p>
+<p>Les següents preguntes pressiona N pulsa ENTER en cada suggeriment. </p>
+<p class="image-container"><img style="width: 587.00px" src="img/fad4bdacce689621.png"></p>
+<aside class="warning"><p>Si pressiona Y, eliminarà usuaris anònims i base de dades de proves, deshabilita ingresos remots del root i afegirà noves normes, per al MySQL respecte immediatament els canvis que s&#39;acaben de fer.</p>
 </aside>
+<p>Això diu si vols prohibir que el root inici sessió de remot, en aquest cas li he donat a no.</p>
+<p class="image-container"><img style="width: 587.00px" src="img/13a61bd0cdb708cc.png"></p>
+<p>Diu si vols eliminar la base de dades de prova i accedir-hi, pressiona Y per eliminar la base de dades de prova.</p>
+<p class="image-container"><img style="width: 587.00px" src="img/5910a64d1a305af6.png"></p>
+<p>Despres pressiona Y per tornar a carregar les taules de privilegis.</p>
+<p class="image-container"><img style="width: 587.00px" src="img/5022142973e32092.png"></p>
 <p>En aquest punt, el teu sistema de bases de dades es troba configurat i pots seguir amb la instal·lació de PHP, el component final de la pila LAMP</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Com instal·lar PHP" duration="100000">
-        
+      <google-codelab-step label="Instal·lar PHP" duration="0">
+        <p>PHP és el component de la configuració que processa codi per desplegar contingut dinàmic. Podeu executar arxius, connectar-se a les teves bases de dades MySQL per obtenir informació, i gestionar la visualització de l&#39;contingut processat sobre el teu servidor web.</p>
+<p>El podem configurar perquè s&#39;executi sobre el servidor Apache i perquè es comuniqui amb la base de dades MySQL</p>
+<pre><code>sudo apt install php libapache2-mod-php php-mysql</code></pre>
+<aside class="special"><p><strong>NOTA:</strong> Això hauria instal·lar PHP sense problemes, però, provarem aquesta instal·lació en aquest moment.</p>
+</aside>
+
 
       </google-codelab-step>
     
-      <google-codelab-step label="Com instal·lar OwnCloud dins de un contenedor" duration="10">
-        <p>Utilitza aquestes comandes per actualitzar i instalar el OwnCloud.</p>
-<pre><code>Sudo apt-get update
-Sudo apt-get install owncloud-files.</code></pre>
+      <google-codelab-step label="Instal·lar OwnCloud dins de un contenedor" duration="10">
+        <p>Utilitza aquestes comandes per instalar el OwnCloud.</p>
+<pre><code>Sudo apt-get update</code></pre>
+<p class="image-container"><img style="width: 587.00px" src="img/83c7f9f11b43dc89.png"></p>
 <p>Paquetes LAMP:<a href="https://www.digitalocean.com/community/tutorials/como-instalar-en-ubuntu-18-04-la-pila-lamp-linux-apache-mysql-y-php-es" target="_blank">https://www.digitalocean.com/community/tutorials/como-instalar-en-ubuntu-18-04-la-pila-lamp-linux-apache-mysql-y-php-es</a></p>
 <p>OwnCloud:<a href="https://maslinux.es/como-instalar-owncloud-en-ubuntu-18-04/" target="_blank">https://maslinux.es/como-instalar-owncloud-en-ubuntu-18-04/</a></p>
 
