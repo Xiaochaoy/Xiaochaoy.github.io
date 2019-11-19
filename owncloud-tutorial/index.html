@@ -112,18 +112,69 @@ sudo apt install apache2</code></pre>
 <pre>sudo apt install php libapache2-mod-php php-mysql</pre>
 <aside class="special"><p><strong>NOTA:</strong> Això hauria instal·lar PHP sense problemes, però, provarem aquesta instal·lació en aquest moment.</p>
 </aside>
-<p>En la majoria dels casos, desitjaràs modificar la forma mitjançant la qual Apache serveix arxius quan un directori és sol·licitat. En aquest moment, si un usuari demana un directori de servidor, Apache buscarà, en primera instància, un arxiu anomenat index.html. Nosaltres volem que el servidor web li doni prelació als arxius PHP sobre qualsevol altre arxiu. Per a això farem que l&#39;Apache busqui l&#39;arxiu index.php en primer lloc.</p>
-<p>Per aconseguir-ho, digita la següent comanda per obrir el fitxer dir.conf en un editor de text amb privilegis de superusuari:</p>
+<p>Si un usuari demana un directori de servidor, Apache buscarà, en primera instància, un arxiu anomenat index.html. Volem que el servidor web li doni prelació als arxius PHP sobre qualsevol altre arxiu.</p>
+<p>Per aconseguir-ho, dirigeix-te a la següent comanda per obrir el fitxer dir.conf en un editor de text amb privilegis de superusuari:</p>
 <pre>/etc/apache2/mods-enabled/dir.conf</pre>
 <p>S&#39;hauria veure semblant a això:</p>
 <pre>&lt;IfModule mod_dir.c&gt;
     DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
 &lt;/IfModule&gt;</pre>
-<p>Mou el fitxer d&#39;índex de PHP (subratllat dalt) a la primera posició després de l&#39;especificació DirectoryIndex, s&#39;hauria de veure similar a:</p>
+<p>Mou el fitxer d&#39;índex de PHP a la primera posició després de l&#39;especificació DirectoryIndex, s&#39;hauria de veure similar a:</p>
 <pre>&lt;IfModule mod_dir.c&gt;
     DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 &lt;/IfModule&gt;</pre>
-<p>Quan acabis, grava i tanca l&#39;arxiu pressionant les tecles <strong>Ctrl + X</strong>. Confirma els canvis pressionant I, i tot seguit prem la tecla Enter per verificar el lloc de gravació de l&#39;arxiu.</p>
+<p>Quan acabis, grava i tanca l&#39;arxiu pressionant les tecles <strong><em>Ctrl + X</em></strong>. Confirma els canvis pressionant <strong><em>Y</em></strong>, i tot seguit prem la tecla <strong><em>Enter</em></strong> per verificar el lloc de gravació de l&#39;arxiu.</p>
+<p>Hauràs reiniciar el servidor Apache perquè els teus canvis siguin reconeguts, ho pots fer mitjançant la comanda:</p>
+<pre>sudo systemctl restart apache2</pre>
+<pre><code>Sample Output
+● apache2.service - LSB: Apache2 web server
+   Loaded: loaded (/etc/init.d/apache2; bad; vendor preset: enabled)
+  Drop-In: /lib/systemd/system/apache2.service.d
+           └─apache2-systemd.conf
+   Active: active (running) since Tue 2018-04-23 14:28:43 EDT; 45s ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 13581 ExecStop=/etc/init.d/apache2 stop (code=exited, status=0/SUCCESS)
+  Process: 13605 ExecStart=/etc/init.d/apache2 start (code=exited, status=0/SUCCESS)
+    Tasks: 6 (limit: 512)
+   CGroup: /system.slice/apache2.service
+           ├─13623 /usr/sbin/apache2 -k start
+           ├─13626 /usr/sbin/apache2 -k start
+           ├─13627 /usr/sbin/apache2 -k start
+           ├─13628 /usr/sbin/apache2 -k start
+           ├─13629 /usr/sbin/apache2 -k start
+           └─13630 /usr/sbin/apache2 -k start</code></pre>
+<p><strong>NOTE: </strong>Per ampliar la funcionalitat de PHP, tens la possibilitat d&#39;instal·lar alguns mòduls addicionals. Per veure les opcions disponibles de mòduls i llibreries de PHP, envia els resultats d&#39;apt search a less, un paginador que et permet navegar dins de la sortida d&#39;un altre ordre.</p>
+<pre>apt search php- | less</pre>
+<p>Fes servir les fletxes per moure&#39;t cap amunt i avall, i prem <strong><em>Q</em></strong> per sortir.</p>
+<p>Com a resultat obtindrem tots els components opcionals que podem instal·lar. El sistema et mostrarà una descripció curta de cada un d&#39;ells:</p>
+<p class="image-container"><img style="width: 587.00px" src="img/dc892f65a0d9d36c.png"></p>
+<p>Per indagar més sobre les funcionalitats de cada mòdul, simplement pots buscar a la web la seva descripció, o alternativament, pots veure la descripció llarga de cada paquet, digitant:</p>
+<pre>apt show package_name</pre>
+<p><strong>NOTE: &#34;</strong></p>
+<pre>package_name&#34; hace referencia al nombre del paquete que deseas instalar</pre>
+<p>La sortida serà extensiva, amb un camp en particular anomenat <strong>Descripció</strong> que tindrà una explicació més extensa sobre la funcionalitat que el mòdul proveeix.</p>
+<p>Per exemple, per veure les funcionalitats de la lliçó <strong>php-cli</strong>, podries digitar:</p>
+<pre>apt show php-cli</pre>
+<p>En companyia de molta més informació, veuràs alguna cosa com el següent:</p>
+<pre>Output
+...
+Description: command-line interpreter for the PHP scripting language (default)
+ This package provides the /usr/bin/php command interpreter, useful for
+ testing PHP scripts from a shell or performing general shell scripting tasks.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Ubuntu&#39;s default
+ PHP version (currently 7.2).
+...</pre>
+<p>Si després de la teva consulta decideixes instal·lar algun paquet, ho pots fer mitjançant el comandament apt install, de la mateixa manera que ho has fet per a un altre programari.</p>
+<p>Si t&#39;adones que necessites instal·lar php-cli, pots escriure:</p>
+<pre>sudo apt install php-cli</pre>
+<p>Si vols instal·lar més d&#39;un mòdul, ho pots fer listándolos separats per espai, després de la comanda apt install, semblant al següent:</p>
+<pre>sudo apt install package1 package2 ...</pre>
+<p><a href="https://www.digitalocean.com/community/tutorials/como-instalar-en-ubuntu-18-04-la-pila-lamp-linux-apache-mysql-y-php-es" target="_blank"><paper-button class="colored" raised>Aquí puedes ver cómo evaluar el procesamiento de PHP</paper-button></a></p>
 
 
       </google-codelab-step>
