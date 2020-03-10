@@ -7,6 +7,9 @@
 
     .page {
         min-height: 100%;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 100px auto 100px;
     }
 
     .header, .footer {
@@ -27,7 +30,7 @@
         width: 75%;
         grid-template-columns: repeat(auto-fill, minmax(150px,1fr ));
         grid-template-rows: 1fr 1fr 1fr;
-        grid-gap: 2%;
+        grid-gap: 1em;
     }
 
     .explorer li {
